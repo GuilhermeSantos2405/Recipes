@@ -1,0 +1,122 @@
+.navbar{
+    padding: 0;
+    background-color: #F85A16;
+}   
+.navbar-brand{
+    background-color: black;
+    min-width: 9rem;
+    text-align: left;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 10PX;
+
+}
+
+.nav-link{
+    display: block;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px dotted rgba(255,255,255,.2);
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-nav{
+    text-align: center;
+    background-color: black;
+}
+.detail-container h5{
+    color: #F85A16;
+    
+}
+
+.detail-container{
+    background-color:#f9f9f9;
+}
+.detail-itens{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.detail-itens h5{
+    color: #F85A16;
+}
+
+.pagination li{
+    color: black;
+    padding: 16px 8px;
+    text-decoration: none;
+    border: none;
+}
+
+.page {
+    padding: 16px;
+    color: black;
+
+}
+
+.page-item-active{
+    background-color: #787878;
+    border-radius:50px ;    
+}
+
+.page-item-active a{
+    color: white;
+}
+
+
+@media screen and (min-width: 992px) {
+    .navbar-nav{
+        background-color: transparent;
+        border-bottom: none;
+    }
+}
+
+.pesquisar-container{
+    padding: 5px;
+}
+
+.pesquisar{
+    border-radius: 5px;
+}
+
+.btn-pesquisar{
+    background-color: black;    
+    color: #F85A16;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.footer{
+    background-color: black;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    padding: 20px;
+}
+
+.footer h3{
+    color: white;
+
+}
+.footer-links{
+    list-style-type: none;
+}
+
+.footer-links a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-links li{
+    padding: 5px;    
+}
+
+.icon a{
+    padding: 10px;
+    font-size: 30px;
+    color: #F85A16;
+}
+
+

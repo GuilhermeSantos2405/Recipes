@@ -1,0 +1,39 @@
+{% extends 'base_templates/home/base_home_templates.html' %}
+{% load static %}
+
+{% block title %}Pesquisa {% endblock title %}
+
+{% block content %}
+<div class='detail-container container'>
+    <div class='row'>
+        {% for recipe in recipes_list %}
+            <div class="card-body col-6 offset-0.5">
+                <div class='detail-itens'>
+                <h5 class="">{{recipe.title|upper}}</h5>
+                <img src="{{recipe.image.url}}" height='300px' width='100%' alt="">
+                <div class='container mb-3'> 
+                    <div class='detail-title row'>
+                        <h5 class="card-header text text-center border col-4">Tempo</h5>
+                        <h5 class="card-header text text-center border col-4">Rendimento</h5>
+                        <h5 class="card-header text text-center border col-4">Autor</h5>
+                    </div> 
+                    <div class='row'>
+                        <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.preparation_time}} minutos</div>
+                        {%if recipe.servings == 1%}
+                            <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.servings}} porção</div>
+                        {% else %}
+                            <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.servings}} porções</div>
+                        {% endif %}
+                        <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.author|title}}</div>
+                    </div>                    
+                </div>
+            </div> 
+            </div>
+            {% empty %}
+                <div class="center m-y">
+                    <h3 >Não foi encontrado o item pesquisado</h3>
+                </div>
+        {% endfor %}
+    </div> 
+</div> 
+{% endblock  %}

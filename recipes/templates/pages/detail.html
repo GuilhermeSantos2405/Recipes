@@ -1,0 +1,47 @@
+{% extends 'base_templates/base_detail_templates.html' %}
+{% load static %}
+
+{% block title %} Detalhes  {% endblock  %}
+
+{% block nav %}Receitas detalhes{% endblock  %}
+
+{% block content %}
+<div class='detail-container container'>
+    <div class='row'>
+        <div class="card-body col-10 offset-1">
+            <div class='detail-itens'>
+            <h5 class="">{{recipe.title}}</h5>
+            {%if recipe.image %}
+                <img src="{{recipe.image.url}}" height='400px' width='100%' alt="">
+            {% endif %}
+            <div class='container mb-3'> 
+                <div class='detail-title row'>
+                    <h5 class="card-header text text-center border col-4">Tempo</h5>
+                    <h5 class="card-header text text-center border col-4">Rendimento</h5>
+                    <h5 class="card-header text text-center border col-4">Autor</h5>
+                </div> 
+                <div class='row'>
+                    <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.preparation_time}} minutos</div>
+                    {%if recipe.servings == 1%}
+                        <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.servings}} porção</div>
+                    {% else %}
+                        <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.servings}} porções</div>
+                    {% endif %}
+                    <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.author|title}}</div>
+                </div> 
+            </div>
+        </div> 
+
+            <div class='detail-itens my-4'>
+                <h5 >INGREDIENTES</h5>
+                <p class='ml-3'> {{recipe.ingredients|linebreaksbr}}</p>
+            </div>
+
+            <div class='detail-itens'>
+            <h5>MODO DE PREPARO</h5>
+            <p class='ml-3'>{{recipe.preparation_method|linenumbers|linebreaksbr}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
