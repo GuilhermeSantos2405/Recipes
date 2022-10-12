@@ -11,12 +11,12 @@
         </div>
         
         
-        <form action="#" method='GET'>
+        <form action="{% url 'search' %}" method='GET'>
             <div class='container my-1'>
                 <div class='row'>
                     <input type="search" name='search_term' class='container-fluid p1 border col-8' autocomplete='off' placeholder='Buscar receitas'>
                     <button type='subimit' class='btn btn-outline-dark col-2'> Pesquisar </button>
-                    <a class='btn btn-outline-danger  col-2' href="#">Cancelar</a>		
+                    <a class='btn btn-outline-danger  col-2' href="{% url 'index' %}">Cancelar</a>		
                 </div>
             </div>
         </form>

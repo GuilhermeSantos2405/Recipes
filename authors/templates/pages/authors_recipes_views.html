@@ -1,12 +1,12 @@
-{% extends 'base_templates/home/base_home_templates.html' %}
+{% extends 'base_templates/detail/base_detail_templates.html' %}
 {% load static %}
-
-{% block title %}Pesquisa {% endblock title %}
+{% block title %} Autor {% endblock  %}
 
 {% block content %}
+
 <div class='detail-container container'>
     <div class='row'>
-        {% for recipe in recipes_list %}
+        {% for recipe in authors_recipes %}
             <div class="card-body col-6 offset-0.5">
                 <div class='detail-itens'>
                 <h5 class="">{{recipe.title|upper}}</h5>
@@ -25,15 +25,25 @@
                             <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.servings}} porções</div>
                         {% endif %}
                         <div class="p-2 bg-light text-dark text-center border col-4">{{recipe.author|title}}</div>
-                    </div>                    
+                    </div> 
+                    
+                    {% if request.user.id == recipe.author.id %}
+                        <div class='row'>
+                            <a class='btn btn-outline-warning  btn-lg col-6' href="{% url 'update' recipe.pk %}">Editar</a>
+                            <a class='btn btn-outline-danger btn-lg col-6' href="{% url 'delete' recipe.pk %}">Excluir</a>
+                        </div>
+                    {%endif%}
+                    
                 </div>
             </div> 
-            </div>
-            {% empty %}
-                <div class="center m-y">
-                    <h3 >Não foi encontrado o item pesquisado</h3>
-                </div>
+            </div> 
         {% endfor %}
     </div> 
-</div>  
+    {% include 'base_templates/detail/pagination.html' %}
+</div>
+
+
+
 {% endblock  %}
+
+

@@ -1,28 +1,32 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="sideNav">
-    <a class="navbar-brand" href="#topo">
-          <span class="d-block d-lg-none">Guilherme</span>
+  {% if request.user.is_authenticated %}
+      <a class="navbar-brand">
+          <span class="d-none d-lg-block my-1">
+              <h3>Seja bem vindo</h3>
+          </span>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir ou fechar menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav">
+      <div class=''>{{user|upper}}</div>
+  {% endif %} 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir ou fechar menu">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse my-4" id="mainNav">
+      <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-item nav-link" href="#">Home</a>
+              <a class="nav-item nav-link" href="{% url 'index'%}">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'create_author' %}">Cadastre-se</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'login' %}">Entrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Sair</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-item nav-link" href="#">Cadastre-se</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-item nav-link" href="#">Entrar</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-item nav-link" href="#">Sair</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#ModalContato" >Contato</a>
-        </li>
-        </ul>
-      </div>
+      </ul>
+
+      {% comment %} {% include 'partials/footer.html' %} {% endcomment %}
+</div>
 </nav>
