@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 
 import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w_y=0(dz$vp(v$nc3fa!k9(q*e5+o^wkb03^7n1((4dh61&fm8'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'stdimage',
     'crispy_forms',
+
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +142,22 @@ LOGIN_REDIRECT_URL = 'index'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'BLACKLIST_AFTER_ROTATION': False,
+    'SIGNING_KEY': os.environ.get('SECRET_KEY_JWT', 'INSECURE'),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
